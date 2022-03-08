@@ -1,11 +1,11 @@
-const Note = require('./notesModel');
+const NotesModel = require('./notesModel');
 
 describe('notes', () => {
   
   let notes;
 
   beforeEach(() => {
-    notes = new Note();
+    notes = new NotesModel();
   });
 
   it('starts with no notes', () => {
@@ -26,6 +26,7 @@ describe('notes', () => {
   })
 
 })
+
 
 
 
