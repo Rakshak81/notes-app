@@ -20,23 +20,36 @@ describe('NotesView',() => {
 
     expect(document.querySelectorAll('div.note').length).toEqual(2);
  });
-});
+ it("Adds New note", () => {
+  document.body.innerHTML = fs.readFileSync('./index.html');
 
+  const model = new NotesModel();
+  const view = new NotesView(model);
 
+  const input = document.querySelector('#Noteinput');
+  input.value = "Test Add Note";
+
+  const button = document.querySelector('#AddNote');
+
+  button.click();
+
+  expect(document.querySelectorAll('div.note').length).toEqual(1);
+  expect(document.querySelectorAll('div.note')[0].innerText).toEqual("Test Add Note");
+
+ });
+
+ describe('NotesView',() => {
+  it('displays two notes', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
  
-
-
-
-
-
-
-
-
-// describe(‘Notes’, () => {
-//   it(‘displays 3 paragraphs’, () => {
-//     document.body.innerHTML = fs.readFileSync(‘./index.html’);
-//     const view = new View();
-//     view.addParagraph()
-//     expect(document.querySelectorAll(‘p’).length).toBe(3);
-//   });
-// });
+     const model = new NotesModel();
+     const view = new NotesView(model);
+     model.addNote('Feed cat');
+     model.addNote('Feed bunny');
+     view.displayNotes();
+     view.displayNotes();
+ 
+     expect(document.querySelectorAll('div.note').length).toEqual(2);
+  });
+});
+});
